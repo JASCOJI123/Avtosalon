@@ -1,4 +1,5 @@
 import asyncio
+import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -21,4 +22,4 @@ async def home(): return FileResponse("web/index.html")
 async def admin_page(): return FileResponse("web/admin.html")
 @app.get("/health")
 async def health(): return {"status":"ok"}
-if __name__=="__main__": uvicorn.run("app.__main__:app",host="0.0.0.0",port=8000)
+if __name__=="__main__": uvicorn.run("app.__main__:app",host="0.0.0.0",port=int(os.getenv("PORT","8000")))
