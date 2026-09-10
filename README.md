@@ -30,7 +30,7 @@ Environment variables:
 - `DATABASE_URL` — Render internal PostgreSQL URL using `postgresql+asyncpg://`
 - `ADMIN_USERNAME` — CRM username
 - `ADMIN_PASSWORD` — strong CRM password
-- `WEB_APP_URL` — public Render URL, e.g. `https://your-service.onrender.com`
+- `WEB_APP_URL` — public Render URL
 - `CORS_ORIGINS` — same public URL, comma separated
 - `SECRET_KEY` — long random secret
 
@@ -38,10 +38,10 @@ Start command is handled by Docker.
 
 After first deploy:
 ```bash
-docker compose exec app alembic upgrade head
-docker compose exec app python -m app.seed
+python -m app.seed
 ```
-For Render, run the migration/seed commands from the service shell if you want demo data.
+
+For Render, run the seed command from the service shell if you want demo data.
 
 ## Important
 Change demo credentials before production. Never commit `.env`.
